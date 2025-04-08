@@ -158,7 +158,9 @@ Make sure to use a recent Android Studio version (Hedgehog or newer) for best ex
 ## 📸 Screenshots
 
 **Dark Mode**
+
 ![image](https://github.com/user-attachments/assets/94c1756c-b969-4eda-98ba-5b0e1924912b)
 
 **Light Mode**
+
 ![image](https://github.com/user-attachments/assets/9c5efa0e-b3d6-4d56-b4a6-64faf9524e7d)
