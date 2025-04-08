@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Comments</string>
+    <string name="oops">Oops, something went wrong!</string>
+    <string name="default_user">Default User</string>
+</resources>
