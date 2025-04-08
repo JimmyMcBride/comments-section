@@ -65,6 +65,7 @@ fun CommentsScreen(
                     .fillMaxSize()
                     .padding(innerPadding)
                     .padding(SM_PADDING),
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 items(items = commentsList) { comment ->
                     CommentItem(comment)
@@ -76,7 +77,9 @@ fun CommentsScreen(
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                CircularProgressIndicator(Modifier.size(LG_LOADING_SIZE).testTag("loading_spinner"))
+                CircularProgressIndicator(Modifier
+                    .size(LG_LOADING_SIZE)
+                    .testTag("loading_spinner"))
             }
         }, error = { message ->
             Column(
@@ -190,6 +193,18 @@ fun CommentsScreenSuccessPreview() {
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 fun CommentsScreenSuccessDarkPreview() {
+    CommentsTheme {
+        CommentsScreen(fakeCommentsListState()) {}
+    }
+}
+
+@Preview(
+    showBackground = true,
+    uiMode = Configuration.UI_MODE_NIGHT_YES,
+    device = "spec:width=1230dp,height=300dp,dpi=480"
+)
+@Composable
+fun CommentsScreenSuccessWideDarkPreview() {
     CommentsTheme {
         CommentsScreen(fakeCommentsListState()) {}
     }
