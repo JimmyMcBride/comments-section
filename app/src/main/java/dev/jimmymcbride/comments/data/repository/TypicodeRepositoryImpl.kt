@@ -11,8 +11,9 @@ class TypicodeRepositoryImpl(
     override suspend fun getComments(): AsyncState<List<Comment>> {
         return try {
             val res = apiService.getComments()
-            if (res.isSuccessful && res.body() != null)
-                AsyncState.Success(data = res.body()!!)
+            val body = res.body()
+            if (res.isSuccessful && body != null)
+                AsyncState.Success(data = body)
             else
                 AsyncState.Error(message = "Something went wrong.")
         } catch (e: Exception) {

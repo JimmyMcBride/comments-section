@@ -1,5 +1,6 @@
 package dev.jimmymcbride.comments.presentation.screens.comments
 
+import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -14,13 +15,13 @@ import javax.inject.Inject
 class CommentsViewModel @Inject constructor(
     private val repo: TypicodeRepository
 ) : ViewModel() {
-    var commentsListState = mutableStateOf<AsyncState<List<Comment>>>(AsyncState.Idle)
-        private set
+    private val _commentsListState = mutableStateOf<AsyncState<List<Comment>>>(AsyncState.Idle)
+    val commentsListState: State<AsyncState<List<Comment>>> = _commentsListState
 
     fun fetchComments() {
-        commentsListState.value = AsyncState.Loading
+        _commentsListState.value = AsyncState.Loading
         viewModelScope.launch {
-            commentsListState.value = repo.getComments()
+            _commentsListState.value = repo.getComments()
         }
     }
 }

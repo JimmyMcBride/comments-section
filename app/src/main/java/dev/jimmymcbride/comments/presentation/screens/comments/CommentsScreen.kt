@@ -22,6 +22,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -49,17 +50,17 @@ import dev.jimmymcbride.comments.presentation.ui.theme.avatarBackground
 
 @Composable
 fun CommentsScreen(
-    mutableCommentsListState: MutableState<AsyncState<List<Comment>>>,
+    commentsListState: State<AsyncState<List<Comment>>>,
     fetchComments: () -> Unit,
 ) {
-    val commentsListState by mutableCommentsListState
+    val commentsList by commentsListState
 
     LaunchedEffect(Unit) {
         fetchComments()
     }
 
     Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-        commentsListState.DuringComposableState(success = { commentsList ->
+        commentsList.DuringComposableState(success = { commentsList ->
             LazyColumn(
                 Modifier
                     .fillMaxSize()
@@ -77,9 +78,11 @@ fun CommentsScreen(
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                CircularProgressIndicator(Modifier
-                    .size(LG_LOADING_SIZE)
-                    .testTag("loading_spinner"))
+                CircularProgressIndicator(
+                    Modifier
+                        .size(LG_LOADING_SIZE)
+                        .testTag("loading_spinner")
+                )
             }
         }, error = { message ->
             Column(
