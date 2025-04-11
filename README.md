@@ -164,3 +164,8 @@ Make sure to use a recent Android Studio version (Hedgehog or newer) for best ex
 **Light Mode**
 
 ![image](https://github.com/user-attachments/assets/9c5efa0e-b3d6-4d56-b4a6-64faf9524e7d)
+
+**Landscape Mode**
+
+![image](https://github.com/user-attachments/assets/e84cbedb-5c40-4f9e-a3f6-6e0438e79c48)
+
